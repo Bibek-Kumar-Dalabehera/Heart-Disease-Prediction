@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+      <!-- Correct Bootstrap 4 CSS link -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Heart Disease Prediction Tool</title>
+  <style>
+    /* Styling for the page */
+    body {
+      /* background-image: url('static/download.png'); */
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin: 5px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button_css {
+      color: #fff !important;
+      text-transform: uppercase;
+      text-decoration: none;
+      background-color: #4CAF50;
+      padding: 15px 20px;
+      display: inline-block;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button_css:hover {
+      background: #3e8e41;
+ 
+    }
+
+    .form-container {
+      margin-top: 50px;
+      background-color: rgba(255, 255, 255, 0.984);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+    .dropdown-menu {
+      max-height: 250px; /* Adjust height if dropdown overflows */
+      overflow-y: auto;  /* Scrollable if too many options */
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <div class="form-container">
+      <h1>Heart Disease Prediction Tool</h1>
+      <p>Enter the required health parameters below:</p>
+      <form action="{{ url_for('prediction') }}" method="post">
+        <lable><b>Age:</b></lable>
+        <input type="text" name="age" placeholder="Age" required />
+        <lable><b>Resting Blood Pressure:</b></lable>
+        <input type="text" name="trestbps" placeholder="0 - 200" required />
+        <lable><b>Cholesterol:</b></lable>
+        <input type="text" name="chol" placeholder="0 - 605" required />
+        <br>
+        <lable><b>Fasting Blood Sugar:</b></lable>
+        <input type="text" name="FastingBS" placeholder="NO(0)/Yes(1)" required />
+        <lable><b>Maximum Heart Rate Achieved:</b></lable>
+        <input type="text" name="thalach" placeholder="60 - 210" required />
+        <lable><b>Oldpeak:</b></lable>
+        <input type="text" name="oldpeak" placeholder="-2.5 - 6.5" required />
+        <br>
+
+        <div class="col-md-4 form-group" style="text-align: center;">
+          <label><b>Sex:</b></label>
+          <select class="selectpicker form-control" id="Sex" name="Sex" required="1">
+              {% for Sex in Sex %}
+                  <option value="{{ Sex }}">{{ Sex }}</option>
+              {% endfor %}
+          </select>
+      </div>
+      <div class="col-md-4 form-group" style="text-align: center;">
+        <label><b>Chest Pain Type:</b></label>
+        <select class="selectpicker form-control" id="ChestPainType" name="ChestPainType" required="1">
+            {% for ChestPainType in ChestPainType %}
+                <option value="{{ ChestPainType }}">{{ ChestPainType }}</option>
+            {% endfor %}
+        </select>
+    <!-- </div>
+    <div class="col-md-4 form-group" style="text-align: center;"> -->
+      <label><b>Resting ECG :</b></label>
+      <select class="selectpicker form-control" id="RestingECG" name="RestingECG" required="1">
+          {% for RestingECG in RestingECG %}
+              <option value="{{ RestingECG }}">{{ RestingECG }}</option>
+          {% endfor %}
+      </select>
+  </div>
+
+  <div class="col-md-4 form-group" style="text-align: center;">
+    <label><b>Exercise Angina:</b></label>
+    <select class="selectpicker form-control" id="ExerciseAngina" name="ExerciseAngina" required="1">
+        {% for ExerciseAngina in ExerciseAngina %}
+            <option value="{{ ExerciseAngina }}">{{ ExerciseAngina }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="col-md-4 form-group" style="text-align: center;">
+  <label><b>ST Slope:</b></label>
+  <select class="selectpicker form-control" id="ST_Slope" name="ST_Slope" required="1">
+      {% for ST_Slope in ST_Slope %}
+          <option value="{{ ST_Slope }}">{{ ST_Slope }}</option>
+      {% endfor %}
+  </select>
+</div>
+        <div class="button-container">
+          <button type="submit" class="button_css" onclick="send_data()"><strong>Check Heart Condition</strong></button>
+        </div>
+      </form>
+      <div class="col-md-12" style="text-align: center; margin-top: 20px;">
+        <h3><span id="prediction"></span></h3>
+    </div>
+    <br>
+      <div>
+        <a href="\">Go to home page</a>
+      </div>
+    </div>
+  </center>
+
+
+<script>
+  function form_handler(event) {
+      event.preventDefault(); // Prevent form submission
+  }
+  function send_data() {
+      document.querySelector('form').addEventListener("submit", form_handler);
+
+      var fd = new FormData(document.querySelector('form'));
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('POST', '/price', true);
+      document.getElementById("prediction").innerHTML = "Wait!! Predicting...";
+
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+              let response = xhr.responseText.trim();
+              let result = xhr.responseText.trim();
+              document.getElementById('prediction').innerHTML = "There is " + response + " chance of you, will afffect by  heart disease.";
+          }
+      };
+
+      xhr.send(fd);
+  }
+</script>
+
+      <!-- Correct Bootstrap 4 JS link -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html> 

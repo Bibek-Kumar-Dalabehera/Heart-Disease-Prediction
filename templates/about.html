@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <title>Description</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      .high-contrast {
+        color: #333;
+        background-color: #fff;
+      }
+      .container {
+        width: 100%;
+        height: 150vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .hero {
+        background-color: #4d4dff;
+        color: #f0f0f0;
+        padding: 50px;
+        text-align: center;
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 1.2em;
+        line-height: 1.5em;
+      }
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 50px;
+        background-color: #4d4dff;
+        color: #f0f0f0;
+      }
+      .feature {
+        flex: 0 0 30%;
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .feature h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .feature p {
+        font-size: 1em;
+        line-height: 1.5em;
+      }
+      .feature a {
+        color: #337ab7;
+        text-decoration: none;
+      }
+      .feature a:hover {
+        color: #23527c;
+      }
+      .text-high-contrast {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        background-color: #4d4dff;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        .feature {
+          flex: 0 0 45%;
+        }
+      }
+      @media (max-width: 480px) {
+        .feature {
+          flex: 0 0 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <h1>Analyze Heart Health with Confidence</h1>
+        <p>
+          This tool uses advanced machine learning to detect the likelihood of heart disease. By analyzing key health metrics, it empowers users to take informed decisions about their well-being.
+        </p>
+      <div class="features">
+        <div class="feature">
+          <h2 class="text  high-contrast">Heart Disease Detection</h2>
+          <p class="text  high-contrast">
+            Predict the likelihood of heart disease using clinical and health data for early risk identification.
+          </p>
+          <a href="https://www.sciencedirect.com/science/article/pii/S1877050924007658">Learn more &#8594;</a>
+        </div>
+        <div class="feature">
+          <h2 class="text high-contrast">Health Metrics Analysis</h2>
+          <p class="text high-contrast">
+            Leverage machine learning to analyze metrics like age, cholesterol levels, blood pressure, and more.
+          </p>
+          <a href="https://www.healthdata.org/research-analysis/cardiovascular-health-data">Learn more &#8594;</a>
+        </div>
+        <div class="feature">
+          <h2 class="text  high-contrast">Personalized Insights</h2>
+          <p class="text  high-contrast">
+            Get customized predictions based on your input data and receive actionable insights about your heart health.
+          </p>
+          <a href="https://www.heart.org/en/health-topics/consumer-healthcare/heart-insight">Learn more &#8594;</a>
+        </div>
+      </div>
+      <div class="cta">
+        <p class="text-high-contrast">Take the first step towards better heart health today!</p>
+      </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
